@@ -20,8 +20,8 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — ${siteConfig.roles[0]}`,
-    template: `%s — ${siteConfig.name}`,
+    default: `${siteConfig.name} - ${siteConfig.roles[0]}`,
+    template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.intro,
   openGraph: {

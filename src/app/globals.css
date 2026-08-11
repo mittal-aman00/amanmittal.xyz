@@ -88,7 +88,7 @@ body {
   text-wrap: balance;
 }
 
-/* Hairline that fades out at both ends — used under section headings. */
+/* Hairline that fades out at both ends - used under section headings. */
 .rule-fade {
   background: linear-gradient(
     to right,

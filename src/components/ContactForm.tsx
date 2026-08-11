@@ -17,7 +17,7 @@ export function ContactForm() {
     event.preventDefault();
     const form = event.currentTarget;
 
-    // Honeypot — real people leave this hidden field empty.
+    // Honeypot - real people leave this hidden field empty.
     if ((form.elements.namedItem("company") as HTMLInputElement)?.value) {
       setStatus("sent");
       return;
@@ -113,7 +113,7 @@ export function ContactForm() {
       <div role="status" aria-live="polite" className="min-h-[1.5rem] text-center">
         {status === "sent" && (
           <p className="text-sm text-accent">
-            Thanks — your message is on its way. I&rsquo;ll get back to you shortly.
+            Thanks - your message is on its way. I&rsquo;ll get back to you shortly.
           </p>
         )}
         {status === "error" && (

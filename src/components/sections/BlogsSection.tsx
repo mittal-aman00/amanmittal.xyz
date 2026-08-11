@@ -25,7 +25,7 @@ export function BlogsSection() {
       ) : (
         <Reveal delay={0.2}>
           <p className="mt-14 rounded-2xl border border-dashed border-border-strong px-6 py-16 text-center text-sm text-muted">
-            No posts published yet — check back soon.
+            No posts published yet - check back soon.
           </p>
         </Reveal>
       )}

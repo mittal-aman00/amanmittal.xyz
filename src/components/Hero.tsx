@@ -35,7 +35,7 @@ export function Hero() {
             variants={item}
             className="font-display text-[2.6rem] font-semibold leading-[1.05] tracking-tight text-foreground sm:text-6xl lg:text-[4.1rem]"
           >
-            Hi, I&rsquo;m
+            Hi 👋, I&rsquo;m
             <br />
             <span className="text-accent">{siteConfig.name}</span>
           </motion.h1>

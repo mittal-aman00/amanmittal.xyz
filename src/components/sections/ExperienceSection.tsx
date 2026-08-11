@@ -9,7 +9,7 @@ export function ExperienceSection() {
       <SectionHeading
         eyebrow="Work History"
         title="Where I've spent my time."
-        description="Every role so far, plotted on one timeline — bar lengths track how long each one lasted."
+        description="Every role so far, plotted on one timeline. Bar lengths track how long each one lasted."
       />
 
       <Reveal delay={0.1} className="mt-14">

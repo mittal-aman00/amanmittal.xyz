@@ -4,7 +4,7 @@ import blogsData from "../../content/blogs/blogs.json";
 /**
  * Written content for the site.
  *
- * Projects and blog posts are edited as JSON under `content/` — see
+ * Projects and blog posts are edited as JSON under `content/` - see
  * `content/projects/schema.json` and `content/blogs/schema.json` for the
  * shape of each entry. Everything else lives in this file.
  */
@@ -12,9 +12,9 @@ import blogsData from "../../content/blogs/blogs.json";
 /* ------------------------------------------------------------------ About */
 
 export const bio: string[] = [
-  "I'm Aman — an SAP Technical Lead with around nine years of consulting experience across multiple SAP verticals and systems. Day to day that means architecting solutions, shaping scope, and carrying project deliverables through to something that actually works in production.",
-  "Most of my depth is in ABAP on HANA and the SAP Business Technology Platform: RAP and Cloud ABAP, CDS views and AMDP, and BTP services like Integration Suite, HANA Cloud and Event Mesh. A good chunk of my work has been integration — getting SAP to talk cleanly to other SAP systems and to third parties like Salesforce and AWS, then keeping that conversation observable when it breaks.",
-  "Lately I've been pulling AI into that same territory, which is where side projects like SupplyMindIQ come from. I write about what I learn and take on selected contract and freelance engagements — if you're working on something that sounds like a fit, I'd like to hear about it.",
+  "I'm Aman, an SAP Technical Lead with around nine years of consulting experience across multiple SAP verticals and systems. Day to day that means architecting solutions, shaping scope, and carrying project deliverables through to something that actually works in production.",
+  "Most of my depth is in ABAP on HANA and the SAP Business Technology Platform: RAP and Cloud ABAP, CDS views and AMDP, and BTP services like Integration Suite, HANA Cloud and Event Mesh. A good chunk of my work has been integration: getting SAP to talk cleanly to other SAP systems and to third parties like Salesforce and AWS, then keeping that conversation observable when it breaks.",
+  "Lately I've been pulling AI into that same territory, which is where side projects like SupplyMindIQ come from. I write about what I learn and take on selected contract and freelance engagements. If you're working on something that sounds like a fit, I'd like to hear about it.",
 ];
 
 export type SkillGroup = {
@@ -64,24 +64,21 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    category: "Integration & Cloud",
-    items: [
-      "SAP CPI",
-      "Groovy Scripts",
-      "Open Connectors",
-      "Salesforce",
-      "AWS S3",
-      "AWS Lambda",
-      "AWS SageMaker",
-    ],
+    category: "Cloud Infrastructure",
+    items: ["AWS", "GCP", "Azure", "SAP BTP"],
   },
   {
     category: "Business Processes",
-    items: ["Sales & Distribution", "Material Management", "Embedded Warehouse Management"],
+    items: [
+      "Sales & Distribution",
+      "Material Management",
+      "Embedded Warehouse Management",
+      "SAP FICO",
+    ],
   },
   {
     category: "Tools",
-    items: ["SAP BAS", "Eclipse", "VS Code", "SAP UI5", "Git"],
+    items: ["SAP BAS", "Eclipse", "VS Code", "Cursor", "Claude Code", "Git"],
   },
 ];
 
@@ -100,7 +97,7 @@ export type TimelineEntry = {
 };
 
 /**
- * Order does not matter — the timeline sorts chronologically.
+ * Order does not matter - the timeline sorts chronologically.
  * Entries are grouped per employer; promotions within one company are noted in
  * the summary rather than drawn as separate overlapping bars.
  */

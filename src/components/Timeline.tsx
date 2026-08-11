@@ -51,7 +51,7 @@ function formatPoint(value: string): string {
 function formatRange(start: string, end: string): string {
   const from = formatPoint(start);
   const to = formatPoint(end);
-  return from === to ? from : `${from} — ${to}`;
+  return from === to ? from : `${from} - ${to}`;
 }
 
 type Placed = TimelineEntry & {
@@ -77,7 +77,7 @@ type Layout = {
 
 /**
  * Positions everything in percentages of the track rather than pixels, so the
- * whole history fits the container at any width — no sideways scrolling.
+ * whole history fits the container at any width - no sideways scrolling.
  *
  * Cards prefer to alternate above and below the rail. When two roles start too
  * close together for that to work, one moves out to a further lane instead of

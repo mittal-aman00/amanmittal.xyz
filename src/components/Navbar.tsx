@@ -44,7 +44,7 @@ export function Navbar() {
       <nav className="mx-auto flex h-[4.5rem] max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
         <a
           href="#top"
-          aria-label={`${siteConfig.name} — back to top`}
+          aria-label={`${siteConfig.name} - back to top`}
           onClick={() => setOpen(false)}
           className="shrink-0 opacity-90 transition-opacity duration-300 hover:opacity-100"
         >

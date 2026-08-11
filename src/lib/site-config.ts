@@ -5,10 +5,10 @@ export const siteConfig = {
   /** Cycled through by the animated tagline on the landing page. */
   roles: ["AI Enthusiast", "SAP Professional", "Tech Savant"],
   intro:
-    "I design and ship software that solves real business problems — from enterprise SAP landscapes to AI-driven products.",
+    "I design and ship software that solves real business problems, from enterprise SAP landscapes to AI-driven products.",
   location: "Mumbai, India",
   email: "mittal.aman00@gmail.com",
-  /** Optional — drop a PDF at public/aman-mittal-resume.pdf and set this to that path. */
+  /** Optional - drop a PDF at public/aman-mittal-resume.pdf and set this to that path. */
   resumeUrl: "",
   socials: {
     linkedin: "https://www.linkedin.com/in/mittalaman00/",
@@ -17,7 +17,7 @@ export const siteConfig = {
   },
 } as const;
 
-/** The site is one scrolling page — every link targets a section id. */
+/** The site is one scrolling page - every link targets a section id. */
 export const navLinks = [
   { href: "#top", label: "Home" },
   { href: "#about", label: "About" },

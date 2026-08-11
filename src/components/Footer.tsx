@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="mt-8 border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <a href="#top" aria-label={`${siteConfig.name} — back to top`}>
+          <a href="#top" aria-label={`${siteConfig.name} - back to top`}>
             <Image
               src="/images/signature.png"
               alt={siteConfig.name}

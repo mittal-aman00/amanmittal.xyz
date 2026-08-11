@@ -9,7 +9,7 @@ export function ProjectsSection() {
       <SectionHeading
         eyebrow="Projects"
         title="Things I've built."
-        description="Each one is open source — the code sits on GitHub if you'd like a closer look."
+        description="Each one is open source. The code sits on GitHub if you'd like a closer look."
       />
 
       {projects.length > 0 ? (
@@ -23,7 +23,7 @@ export function ProjectsSection() {
       ) : (
         <Reveal delay={0.2}>
           <p className="mt-14 rounded-2xl border border-dashed border-border-strong px-6 py-16 text-center text-sm text-muted">
-            Nothing published here yet — check back soon.
+            Nothing published here yet - check back soon.
           </p>
         </Reveal>
       )}

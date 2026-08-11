@@ -7,7 +7,7 @@
   "properties": {
     "posts": {
       "type": "array",
-      "description": "Order does not matter — posts are sorted newest first by date.",
+      "description": "Order does not matter - posts are sorted newest first by date.",
       "items": { "$ref": "#/definitions/post" }
     }
   },
