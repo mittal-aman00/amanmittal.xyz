@@ -1,0 +1,11 @@
+{
+  "$schema": "./schema.json",
+  "name": "Your Project Name",
+  "tagline": "One short line under the title.",
+  "description": "Two or three sentences about what the project does and why it exists.",
+  "image": "/images/projects/your-project.png",
+  "repo": "https://github.com/mittal-aman00/your-repo",
+  "demo": "https://your-demo.vercel.app",
+  "tags": ["Tech1", "Tech2", "Tech3"],
+  "featured": false
+}

@@ -1,9 +1,11 @@
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { ProjectCard } from "@/components/ProjectCard";
-import { projects } from "@/lib/content";
+import { loadProjects } from "@/lib/entries";
 
 export function ProjectsSection() {
+  const projects = loadProjects();
+
   return (
     <section id="projects" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 sm:px-8">
       <SectionHeading

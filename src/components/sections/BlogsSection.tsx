@@ -1,10 +1,10 @@
 import { SectionHeading } from "@/components/SectionHeading";
 import { Reveal } from "@/components/Reveal";
 import { BlogCard } from "@/components/BlogCard";
-import { blogPosts } from "@/lib/content";
+import { loadBlogPosts } from "@/lib/entries";
 
 export function BlogsSection() {
-  const posts = blogPosts;
+  const posts = loadBlogPosts();
 
   return (
     <section id="blogs" className="mx-auto max-w-6xl scroll-mt-24 px-5 py-24 sm:px-8">

@@ -43,12 +43,12 @@ Almost everything you'll want to change lives in two files.
 | --- | --- |
 | `src/lib/site-config.ts` | Name, roles in the animated tagline, intro paragraph, email, résumé link, social URLs, nav items |
 | `src/lib/content.ts` | About bio, skills and tools, work history timeline |
-| `content/projects/projects.json` | Projects |
-| `content/blogs/blogs.json` | Medium article links |
+| `content/projects/*.json` | One file per project (copy `_template.json`) |
+| `content/blogs/*.json` | One file per Medium link (copy `_template.json`) |
 
-Anything commented `PLACEHOLDER` is sample copy waiting to be replaced. The bio, skills and timeline are real, taken from the LinkedIn profile; the blog entries are still samples.
+Bio, skills and timeline are real. Projects and blogs are auto-loaded from those folders - see the README inside each folder for the template.
 
-Both JSON files sit next to a `schema.json` and reference it via `$schema`, so VS Code will autocomplete the fields and flag typos or missing values as you type.
+Files named `schema.json` or starting with `_` (like `_template.json`) are ignored. Every other `*.json` becomes a card. Keep `"$schema": "./schema.json"` for editor validation.
 
 ### Images
 
@@ -59,7 +59,7 @@ Both JSON files sit next to a `schema.json` and reference it via `$schema`, so V
 | `public/images/am-monogram.png` | Navbar mark |
 | `public/images/signature.png` | Footer |
 
-The hero portrait has no frame, mask or vignette. It works because the page background is pure `#000000` and the photo was shot against a black backdrop, so the image's rectangle is genuinely invisible — the subject appears to stand directly on the page.
+The hero portrait has no frame, mask or vignette. It works because the page background is pure `#000000` and the photo was shot against a black backdrop, so the image's rectangle is genuinely invisible - the subject appears to stand directly on the page.
 
 That only holds if the photo's black is *exactly* black, which is what `scripts/prepare-portrait.mjs` guarantees. It crops the source around the subject, pads it out to a clean 4:5 frame with true black, and crushes any near-black noise to `#000`. If you replace the photo, update the measured `SUBJECT` bounds at the top of that script and re-run it:
 
@@ -67,16 +67,17 @@ That only holds if the photo's black is *exactly* black, which is what `scripts/
 node scripts/prepare-portrait.mjs
 ```
 
-A photo with a light or busy background won't blend this way — you'd need to cut the subject out to transparency instead.
+A photo with a light or busy background won't blend this way - you'd need to cut the subject out to transparency instead.
 
 The monogram and signature are white artwork on transparency, so they inherit the dark theme rather than sitting in a coloured box. Any replacement should also be white-on-transparent PNG or SVG.
 
 ### Projects
 
-Append an object to the `projects` array in `content/projects/projects.json`. Required fields are `name`, `description`, `image` and `repo`:
+Drop one JSON file per project into `content/projects/`. Copy `_template.json`, rename it (no leading `_`), fill it in, and put the cover image under `public/images/projects/`.
 
 ```json
 {
+  "$schema": "./schema.json",
   "name": "SupplyMindIQ",
   "tagline": "Your Supply Chain, With a Brain.",
   "description": "Two or three sentences about what it does and why it exists.",
@@ -101,10 +102,11 @@ Append an object to the `projects` array in `content/projects/projects.json`. Re
 
 ### Blog posts
 
-Blogs live on Medium; this site only links to them. Append to the `posts` array in `content/blogs/blogs.json`:
+Blogs live on Medium; this site only links to them. Drop one JSON file per article into `content/blogs/` (copy `_template.json`, rename without the `_`).
 
 ```json
 {
+  "$schema": "./schema.json",
   "title": "Your article title",
   "url": "https://medium.com/@you/your-article-abc123",
   "date": "2026-07-14",

@@ -1,0 +1,11 @@
+{
+  "$schema": "./schema.json",
+  "name": "SupplyMindIQ",
+  "tagline": "Your Supply Chain, With a Brain.",
+  "description": "SupplyMindIQ replaces the endless spreadsheet-refreshing, tab-switching, and \"let me check with procurement\" email chains with a single question box, powered by a team of four specialist AI agents that think in parallel and answer in seconds.",
+  "image": "/images/projects/supplymindiq.png",
+  "repo": "https://github.com/mittal-aman00/SupplyMindIQ",
+  "demo": "https://supply-mind-iq.vercel.app",
+  "tags": ["LangGraph", "FastAPI", "React", "Supabase", "Pinecone"],
+  "featured": true
+}

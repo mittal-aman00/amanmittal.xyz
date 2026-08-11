@@ -1,0 +1,9 @@
+{
+  "$schema": "./schema.json",
+  "title": "Your Medium article title",
+  "url": "https://medium.com/@you/your-article-slug-abc123",
+  "date": "2026-08-11",
+  "excerpt": "One or two sentences that appear on the card.",
+  "tags": ["SAP", "AI"],
+  "readingTime": "6 min read"
+}

@@ -1,52 +1,43 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Blog posts",
-  "description": "Links to Medium articles, shown in the Blogs section of amanmittal.xyz.",
+  "title": "Blog entry",
+  "description": "One Medium article card. Save as content/blogs/<slug>.json (not starting with _). Copy from _template.json.",
   "type": "object",
-  "required": ["posts"],
+  "required": ["title", "url", "date", "excerpt"],
+  "additionalProperties": false,
   "properties": {
-    "posts": {
+    "$schema": {
+      "type": "string",
+      "description": "Points at ./schema.json so the editor can validate this file."
+    },
+    "title": {
+      "type": "string",
+      "description": "Article title on the card.",
+      "minLength": 1
+    },
+    "url": {
+      "type": "string",
+      "description": "Full Medium article URL.",
+      "format": "uri"
+    },
+    "date": {
+      "type": "string",
+      "description": "Publish date as YYYY-MM-DD.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "excerpt": {
+      "type": "string",
+      "description": "One or two sentences under the title.",
+      "minLength": 1
+    },
+    "tags": {
       "type": "array",
-      "description": "Order does not matter - posts are sorted newest first by date.",
-      "items": { "$ref": "#/definitions/post" }
-    }
-  },
-  "definitions": {
-    "post": {
-      "type": "object",
-      "required": ["title", "url", "date", "excerpt"],
-      "additionalProperties": false,
-      "properties": {
-        "title": {
-          "type": "string",
-          "description": "Article title as it should appear on the card.",
-          "minLength": 1
-        },
-        "url": {
-          "type": "string",
-          "description": "Full Medium article URL.",
-          "format": "uri"
-        },
-        "date": {
-          "type": "string",
-          "description": "Publish date in YYYY-MM-DD form.",
-          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
-        },
-        "excerpt": {
-          "type": "string",
-          "description": "One or two sentences shown under the title.",
-          "minLength": 1
-        },
-        "tags": {
-          "type": "array",
-          "description": "Optional topic labels shown as chips.",
-          "items": { "type": "string" }
-        },
-        "readingTime": {
-          "type": "string",
-          "description": "Optional, e.g. \"6 min read\". Medium shows this on the article page."
-        }
-      }
+      "description": "Optional topic chips.",
+      "items": { "type": "string" }
+    },
+    "readingTime": {
+      "type": "string",
+      "description": "Optional, e.g. \"6 min read\"."
     }
   }
 }

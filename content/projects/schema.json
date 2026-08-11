@@ -1,61 +1,51 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Portfolio projects",
-  "description": "Projects shown in the Projects section of amanmittal.xyz.",
+  "title": "Project entry",
+  "description": "One project card. Save as content/projects/<slug>.json (not starting with _). Copy from _template.json.",
   "type": "object",
-  "required": ["projects"],
+  "required": ["name", "description", "image", "repo"],
+  "additionalProperties": false,
   "properties": {
-    "projects": {
+    "$schema": {
+      "type": "string",
+      "description": "Points at ./schema.json so the editor can validate this file."
+    },
+    "name": {
+      "type": "string",
+      "description": "Project title, shown as the card heading.",
+      "minLength": 1
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Optional one-liner under the title."
+    },
+    "description": {
+      "type": "string",
+      "description": "Short paragraph. Two to three sentences reads best.",
+      "minLength": 1
+    },
+    "image": {
+      "type": "string",
+      "description": "Path under public/, e.g. /images/projects/my-project.png. Landscape 16:9.",
+      "pattern": "^/images/.+\\.(png|jpg|jpeg|webp|avif|svg)$"
+    },
+    "repo": {
+      "type": "string",
+      "description": "Full GitHub repository URL.",
+      "pattern": "^https://github\\.com/.+"
+    },
+    "demo": {
+      "type": "string",
+      "description": "Optional live URL. Omit the field if there is no demo."
+    },
+    "tags": {
       "type": "array",
-      "description": "Newest first. Featured projects are pulled to the top automatically.",
-      "items": { "$ref": "#/definitions/project" }
-    }
-  },
-  "definitions": {
-    "project": {
-      "type": "object",
-      "required": ["name", "description", "image", "repo"],
-      "additionalProperties": false,
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "Project title, shown as the card heading.",
-          "minLength": 1
-        },
-        "tagline": {
-          "type": "string",
-          "description": "Optional one-liner shown under the title, e.g. \"Your Supply Chain, With a Brain.\""
-        },
-        "description": {
-          "type": "string",
-          "description": "Short paragraph describing the project. Two to three sentences reads best on the card.",
-          "minLength": 1
-        },
-        "image": {
-          "type": "string",
-          "description": "Path to a cover image inside the public folder, e.g. \"/images/projects/my-project.png\". Landscape (16:9) works best.",
-          "pattern": "^/images/.+\\.(png|jpg|jpeg|webp|avif|svg)$"
-        },
-        "repo": {
-          "type": "string",
-          "description": "Full GitHub repository URL.",
-          "format": "uri",
-          "pattern": "^https://github\\.com/.+"
-        },
-        "demo": {
-          "type": "string",
-          "description": "Optional live deployment URL. Leave out or use an empty string if there isn't one."
-        },
-        "tags": {
-          "type": "array",
-          "description": "Optional technology labels shown as chips on the card.",
-          "items": { "type": "string" }
-        },
-        "featured": {
-          "type": "boolean",
-          "description": "Optional. Featured projects are listed before the rest."
-        }
-      }
+      "description": "Technology chips on the card.",
+      "items": { "type": "string" }
+    },
+    "featured": {
+      "type": "boolean",
+      "description": "Featured projects are listed first."
     }
   }
 }

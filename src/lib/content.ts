@@ -1,12 +1,9 @@
-import projectsData from "../../content/projects/projects.json";
-import blogsData from "../../content/blogs/blogs.json";
-
 /**
  * Written content for the site.
  *
- * Projects and blog posts are edited as JSON under `content/` - see
- * `content/projects/schema.json` and `content/blogs/schema.json` for the
- * shape of each entry. Everything else lives in this file.
+ * Projects and blog posts are one JSON file each under `content/projects/` and
+ * `content/blogs/` - copy `_template.json`, rename it, fill it in. Loaders live
+ * in `src/lib/entries.ts`. Everything else (bio, skills, timeline) is below.
  */
 
 /* ------------------------------------------------------------------ About */
@@ -153,11 +150,6 @@ export type Project = {
   featured?: boolean;
 };
 
-/** Edit `content/projects/projects.json`. Featured entries float to the top. */
-export const projects: Project[] = [
-  ...(projectsData.projects as Project[]),
-].sort((a, b) => Number(b.featured ?? false) - Number(a.featured ?? false));
-
 /* ---------------------------------------------------------------- Blogs */
 
 export type BlogPost = {
@@ -168,8 +160,3 @@ export type BlogPost = {
   tags?: string[];
   readingTime?: string;
 };
-
-/** Edit `content/blogs/blogs.json`. Sorted newest first. */
-export const blogPosts: BlogPost[] = [
-  ...(blogsData.posts as BlogPost[]),
-].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
