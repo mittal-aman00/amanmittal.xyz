@@ -141,7 +141,7 @@ The form posts to `/api/contact`, which sends mail through EmailJS on the server
 
 Also enable **Allow EmailJS API for non-browser applications** under [Account → Security](https://dashboard.emailjs.com/admin/account/security).
 
-Your EmailJS template needs `{{from_name}}`, `{{from_email}}` and `{{message}}`. Without the keys the form shows a friendly error pointing at your email address instead.
+Your EmailJS template needs `{{name}}`, `{{mail}}`, `{{message}}` and `{{reply_to}}`. Without the keys the form shows a friendly error pointing at your email address instead.
 
 ## Theme
 

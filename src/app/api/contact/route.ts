@@ -47,10 +47,13 @@ export async function POST(request: Request) {
     service_id: serviceId,
     template_id: templateId,
     user_id: publicKey,
+    // Must match the EmailJS template variables:
+    // {{name}}, {{mail}}, {{message}}, {{reply_to}}
     template_params: {
-      from_name: fromName,
-      from_email: fromEmail,
+      name: fromName,
+      mail: fromEmail,
       message,
+      reply_to: fromEmail,
     },
   };
 
