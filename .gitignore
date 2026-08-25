@@ -28,6 +28,9 @@ yarn-error.log*
 .env
 .env*.local
 
+# local-only reference (blog + project templates for quick copy)
+TEMPLATES.local.md
+
 # vercel
 .vercel
 
