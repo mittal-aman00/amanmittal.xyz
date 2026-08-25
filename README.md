@@ -137,6 +137,9 @@ The form posts to `/api/contact`, which sends mail through EmailJS on the server
 - `EMAILJS_SERVICE_ID`
 - `EMAILJS_TEMPLATE_ID`
 - `EMAILJS_PUBLIC_KEY`
+- `EMAILJS_PRIVATE_KEY` (required if Account → Security has **Use Private Key** on)
+
+Also enable **Allow EmailJS API for non-browser applications** under [Account → Security](https://dashboard.emailjs.com/admin/account/security).
 
 Your EmailJS template needs `{{from_name}}`, `{{from_email}}` and `{{message}}`. Without the keys the form shows a friendly error pointing at your email address instead.
 
@@ -148,4 +151,4 @@ Fonts are Space Grotesk (headings, `font-display`) and Inter (body), loaded via 
 
 ## Deploying
 
-Vercel is the path of least resistance: import the repo, add the three `EMAILJS_*` environment variables as Secrets (not `NEXT_PUBLIC_`), redeploy, and point `amanmittal.xyz` at the deployment.
+Vercel is the path of least resistance: import the repo, add the `EMAILJS_*` environment variables as Secrets (including `EMAILJS_PRIVATE_KEY` if strict mode is on), redeploy, and point `amanmittal.xyz` at the deployment.
