@@ -34,7 +34,7 @@ export async function POST(request: Request) {
   const serviceId = process.env.EMAILJS_SERVICE_ID;
   const templateId = process.env.EMAILJS_TEMPLATE_ID;
   const publicKey = process.env.EMAILJS_PUBLIC_KEY;
-  const privateKey = process.env.EMAILJS_PRIVATE_KEY;
+  const privateKey = process.env.EMAILJS_PRIVATE_KEY?.trim();
 
   if (!serviceId || !templateId || !publicKey) {
     return NextResponse.json(
@@ -43,10 +43,24 @@ export async function POST(request: Request) {
     );
   }
 
+  if (!privateKey) {
+    console.error(
+      "EMAILJS_PRIVATE_KEY is missing. EmailJS Account → Security has Use Private Key enabled."
+    );
+    return NextResponse.json(
+      {
+        error:
+          "EMAILJS_PRIVATE_KEY is missing. Add it from EmailJS Account → Security.",
+      },
+      { status: 503 }
+    );
+  }
+
   const payload: Record<string, unknown> = {
     service_id: serviceId,
     template_id: templateId,
     user_id: publicKey,
+    accessToken: privateKey,
     // Must match the EmailJS template variables:
     // {{name}}, {{mail}}, {{message}}, {{reply_to}}
     template_params: {
@@ -56,11 +70,6 @@ export async function POST(request: Request) {
       reply_to: fromEmail,
     },
   };
-
-  // Required when EmailJS Account → Security has "Use Private Key" enabled.
-  if (privateKey) {
-    payload.accessToken = privateKey;
-  }
 
   const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
     method: "POST",
@@ -72,7 +81,10 @@ export async function POST(request: Request) {
     const detail = await response.text().catch(() => "");
     console.error("EmailJS send failed:", response.status, detail);
     return NextResponse.json(
-      { error: "Failed to send message." },
+      {
+        error: "Failed to send message.",
+        detail: detail.slice(0, 200),
+      },
       { status: 502 }
     );
   }

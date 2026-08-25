@@ -35,15 +35,19 @@ export function ContactForm() {
       if (!response.ok) {
         const payload = (await response.json().catch(() => null)) as {
           error?: string;
+          detail?: string;
         } | null;
         if (response.status === 503) {
           setStatus("error");
           setError(
-            "The contact form isn't configured yet. Please email me directly."
+            payload?.error?.includes("PRIVATE_KEY")
+              ? "Private key missing on the server. Please email me directly."
+              : "The contact form isn't configured yet. Please email me directly."
           );
           return;
         }
-        throw new Error(payload?.error || "Send failed");
+        console.error("Contact API error:", response.status, payload);
+        throw new Error(payload?.detail || payload?.error || "Send failed");
       }
 
       setStatus("sent");
