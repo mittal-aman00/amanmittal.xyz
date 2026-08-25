@@ -132,9 +132,13 @@ One entry per employer reads best. Promotions inside a company are better descri
 
 ### Contact form
 
-Uses EmailJS entirely client-side, so there's no server to run. Copy `.env.local.example` to `.env.local` and fill in the three `NEXT_PUBLIC_EMAILJS_*` values from your EmailJS dashboard.
+The form posts to `/api/contact`, which sends mail through EmailJS on the server. Keys stay private (no `NEXT_PUBLIC_`). Copy `.env.local.example` to `.env.local` and fill in:
 
-Your template needs to reference `{{from_name}}`, `{{from_email}}` and `{{message}}` — these match the input `name` attributes in `src/components/ContactForm.tsx`. Without the keys the form shows a friendly error pointing at your email address instead.
+- `EMAILJS_SERVICE_ID`
+- `EMAILJS_TEMPLATE_ID`
+- `EMAILJS_PUBLIC_KEY`
+
+Your EmailJS template needs `{{from_name}}`, `{{from_email}}` and `{{message}}`. Without the keys the form shows a friendly error pointing at your email address instead.
 
 ## Theme
 
@@ -144,4 +148,4 @@ Fonts are Space Grotesk (headings, `font-display`) and Inter (body), loaded via 
 
 ## Deploying
 
-Vercel is the path of least resistance: import the repo, add the three `NEXT_PUBLIC_EMAILJS_*` environment variables, and point `amanmittal.xyz` at the deployment.
+Vercel is the path of least resistance: import the repo, add the three `EMAILJS_*` environment variables as Secrets (not `NEXT_PUBLIC_`), redeploy, and point `amanmittal.xyz` at the deployment.

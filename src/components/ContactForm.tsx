@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import emailjs from "@emailjs/browser";
 import { siteConfig } from "@/lib/site-config";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -16,36 +15,43 @@ export function ContactForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-
-    // Honeypot - real people leave this hidden field empty.
-    if ((form.elements.namedItem("company") as HTMLInputElement)?.value) {
-      setStatus("sent");
-      return;
-    }
-
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-
-    if (!serviceId || !templateId || !publicKey) {
-      setStatus("error");
-      setError("The contact form isn't configured yet. Please email me directly.");
-      return;
-    }
+    const data = new FormData(form);
 
     setStatus("sending");
     setError("");
 
     try {
-      await emailjs.sendForm(serviceId, templateId, form, { publicKey });
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from_name: data.get("from_name"),
+          from_email: data.get("from_email"),
+          message: data.get("message"),
+          company: data.get("company"),
+        }),
+      });
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as {
+          error?: string;
+        } | null;
+        if (response.status === 503) {
+          setStatus("error");
+          setError(
+            "The contact form isn't configured yet. Please email me directly."
+          );
+          return;
+        }
+        throw new Error(payload?.error || "Send failed");
+      }
+
       setStatus("sent");
       form.reset();
     } catch (err) {
       setStatus("error");
       setError("That didn't go through. Please try again, or email me directly.");
-      // EmailJS rejects with { status, text }; the text is the only thing that
-      // says *why*, so keep it out of the UI but make it reachable when debugging.
-      console.error("EmailJS send failed:", err);
+      console.error("Contact form send failed:", err);
     }
   }
 
