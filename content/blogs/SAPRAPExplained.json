@@ -1,0 +1,9 @@
+{
+    "$schema": "./schema.json",
+    "title": "SAP RAP Explained: Building Cloud-Ready ABAP Applications",
+    "url": "https://medium.com/@mittal.aman00/sap-rap-explained-building-cloud-ready-abap-applications-1a0cde1caf00",
+    "date": "Jun 2, 2023",
+    "excerpt": "RESTful Application Programming Model, commonly called RAP, is SAP’s strategic framework for developing transactional business applications and services. RESTful Application Programming Model, commonly called RAP, is SAP’s strategic framework for developing transactional business applications and services.",
+    "tags": ["SAP", "RAP", "ABAP", "Cloud"],
+    "readingTime": "11 min read"
+  }

@@ -1,0 +1,11 @@
+{
+    "$schema": "./schema.json",
+    "name": "FilingIQ",
+    "tagline": "Query NVIDIA's 10-K filings (FY24–FY26) with verified, cited answers.",
+    "description": "A RAG system for NVIDIA's SEC 10-K filings that verifies every number and citation before answering — and refuses rather than guesses.",
+    "image": "/images/projects/filingiq.png",
+    "repo": "https://github.com/mittal-aman00/FilingIQ",
+    "demo": "https://filing-iq-seven.vercel.app/",
+    "tags": ["RAG", "FastAPI", "Hybrid Retrieval ", "Re-ranking", "Gaurdrails", "Harness"],
+    "featured": true
+  }
